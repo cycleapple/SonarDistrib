@@ -43,11 +43,11 @@ namespace SonarPlugin.GUI
         private WindowSystem Windows { get; }
         private SonarClient Client { get; }
 
-        private SupportWindow(WindowSystem windows, SonarClient client, int id) : base($"Sonar Support##{id}")
+        private SupportWindow(WindowSystem windows, SonarClient client, int id) : base($"Sonar 支援##{id}")
         {
             this.Windows = windows;
             this.Client = client;
-            this.modalTitleWithId = $"Sonar Support Result##{id:X}";
+            this.modalTitleWithId = $"Sonar 支援結果##{id:X}";
             this.Flags = ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoSavedSettings;
             this.Size = new(0, 0);
 
@@ -86,14 +86,14 @@ namespace SonarPlugin.GUI
             var bodyText = this.Messaage.Body ?? string.Empty;
             var playerText = this.Messaage.Player ?? string.Empty;
 
-            ImGui.Text("* = required");
-            ImGui.Combo("Type", ref supportTypeIndex, GetSupportTypesStrings(SonarLanguage.English), supportTypes.Length);
-            ImGui.InputText($"Contact{(this.Messaage.FromRequired ? "*" : string.Empty)}", ref contactText, SupportMessage.MaximumContactLength);
-            if (ImGui.IsItemHovered()) ImGui.SetTooltip("We cannot contact you in-game.\nProvide an external method of contact.");
-            ImGui.InputText("Title", ref titleText, SupportMessage.MaximumTitleLength);
-            ImGui.InputTextMultiline("Body*", ref bodyText, SupportMessage.MaximumContentLength, new(0, 0));
-            ImGui.InputText($"Player Name{(this.Messaage.PlayerRequired ? "*" : string.Empty)}", ref playerText, SupportMessage.MaximumPlayerNameLength);
-            if (ImGui.IsItemHovered()) ImGui.SetTooltip($"{(this.Messaage.PlayerRequired ? "(Required) " : string.Empty)}Provide character and world name");
+            ImGui.Text("* = 必填");
+            ImGui.Combo("類型", ref supportTypeIndex, GetSupportTypesStrings(SonarLanguage.ChineseSimplified), supportTypes.Length);
+            ImGui.InputText($"聯絡方式{(this.Messaage.FromRequired ? "*" : string.Empty)}", ref contactText, SupportMessage.MaximumContactLength);
+            if (ImGui.IsItemHovered()) ImGui.SetTooltip("無法在遊戲內聯絡你。\n請提供遊戲外的聯絡方式。");
+            ImGui.InputText("標題", ref titleText, SupportMessage.MaximumTitleLength);
+            ImGui.InputTextMultiline("內容*", ref bodyText, SupportMessage.MaximumContentLength, new(0, 0));
+            ImGui.InputText($"玩家名稱{(this.Messaage.PlayerRequired ? "*" : string.Empty)}", ref playerText, SupportMessage.MaximumPlayerNameLength);
+            if (ImGui.IsItemHovered()) ImGui.SetTooltip($"{(this.Messaage.PlayerRequired ? "（必填）" : string.Empty)}請提供角色名稱與所在世界");
 
             this.Messaage.Type = supportTypes[supportTypeIndex];
             this.Messaage.Contact = contactText;
@@ -101,7 +101,7 @@ namespace SonarPlugin.GUI
             this.Messaage.Body = bodyText;
             this.Messaage.Player = playerText;
 
-            if (ImGui.Button("Send"))
+            if (ImGui.Button("傳送"))
             {
                 var logs = this.Messaage.Logs;
                 if (!this.AddLogs) this.Messaage.Logs = string.Empty; // Respect user not wanting to add logs
@@ -120,12 +120,12 @@ namespace SonarPlugin.GUI
 
             ImGui.SameLine();
 
-            if (ImGui.Button("Cancel"))
+            if (ImGui.Button("取消"))
             {
                 this.IsOpen = false;
             }
 
-            ImGui.Checkbox("Add Logs or Additional Text", ref this._logsVisible);
+            ImGui.Checkbox("附加記錄或其他文字", ref this._logsVisible);
 
             ImGui.EndGroup();
         }
@@ -135,7 +135,7 @@ namespace SonarPlugin.GUI
             ImGui.BeginGroup();
 
             var logs = this.Messaage.Logs;
-            ImGui.InputTextMultiline("Logs", ref logs, SupportMessage.MaximumLogsLength, new(0, 0));
+            ImGui.InputTextMultiline("記錄", ref logs, SupportMessage.MaximumLogsLength, new(0, 0));
             this.Messaage.Logs = logs;
 
             ImGui.EndGroup();
@@ -151,13 +151,13 @@ namespace SonarPlugin.GUI
                 ImGui.Spacing();
                 ImGui.TextUnformatted(this.responseText);
                 ImGui.Spacing();
-                if (!string.IsNullOrWhiteSpace(this.responseException) && ImGui.CollapsingHeader("Exception details"))
+                if (!string.IsNullOrWhiteSpace(this.responseException) && ImGui.CollapsingHeader("例外狀況詳細資料"))
                 {
                     ImGui.Indent();
                     ImGui.TextUnformatted(this.responseException);
                     ImGui.Unindent();
                 }
-                if (ImGui.Button("Close")) this._responseVisible = false;
+                if (ImGui.Button("關閉")) this._responseVisible = false;
             }
             else
             {
@@ -188,12 +188,12 @@ namespace SonarPlugin.GUI
             {
                 supportTypesLanguageStrings[lang] = ret = new()
                 {
-                    { SupportType.Feedback, "Feedback" },
-                    { SupportType.Suggestion, "Suggestion" },
-                    { SupportType.BugReport, "Bug Report" },
-                    { SupportType.Question, "Question" },
-                    { SupportType.PlayerReport, "Player Report" },
-                    { SupportType.Appeal, "Appeal" },
+                    { SupportType.Feedback, "意見回饋" },
+                    { SupportType.Suggestion, "建議" },
+                    { SupportType.BugReport, "錯誤回報" },
+                    { SupportType.Question, "問題" },
+                    { SupportType.PlayerReport, "玩家檢舉" },
+                    { SupportType.Appeal, "申訴" },
                 };
             }
             return ret;

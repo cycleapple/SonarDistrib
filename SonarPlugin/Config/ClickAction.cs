@@ -11,22 +11,22 @@ namespace SonarPlugin.Config
     [EnumLocStrings]
     public enum ClickAction
     {
-        [EnumLoc(Fallback = "Default")]
+        [EnumLoc(Fallback = "預設")]
         Default,
 
-        [EnumLoc(Fallback = "None")]
+        [EnumLoc(Fallback = "無")]
         None,
 
-        [EnumLoc(Fallback = "Send to Chat")]
+        [EnumLoc(Fallback = "傳送至聊天")]
         Chat,
 
-        [EnumLoc(Fallback = "Create Flag")]
+        [EnumLoc(Fallback = "建立旗標")]
         Map,
 
-        [EnumLoc(Fallback = "Teleport")]
+        [EnumLoc(Fallback = "傳送")]
         Teleport,
 
-        [EnumLoc(Fallback = "Remove")]
+        [EnumLoc(Fallback = "移除")]
         Remove,
     }
 }

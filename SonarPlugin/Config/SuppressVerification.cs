@@ -7,13 +7,13 @@ namespace SonarPlugin.Config
     [EnumLocStrings]
     public enum SuppressVerification
     {
-        [EnumLoc(Fallback = "Never")]
+        [EnumLoc(Fallback = "永不")]
         None,
 
-        [EnumLoc(Fallback = "Unless required")]
+        [EnumLoc(Fallback = "除非必要")]
         UnlessRequired,
 
-        [EnumLoc(Fallback = "Always")]
+        [EnumLoc(Fallback = "永遠")]
         Always
     }
 }

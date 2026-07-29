@@ -409,12 +409,12 @@ namespace SonarPlugin.GUI
 
         private readonly Dictionary<HuntRank, string> rankStrings = new()
         {
-            { HuntRank.None, $"{Loc.Localize("NoRankText", "None")}" },
-            { HuntRank.B, $"{Loc.Localize("RankBText", "Rank B")}" },
-            { HuntRank.A, $"{Loc.Localize("RankAText", "Rank A")}" },
-            { HuntRank.S, $"{Loc.Localize("RankSText", "Rank S")}" },
-            { HuntRank.SSMinion, $"{Loc.Localize("RankSSMinionText", "Rank SS Minions")}" },
-            { HuntRank.SS, $"{Loc.Localize("RankSSText", "Rank SS")}" },
+            { HuntRank.None, $"{Loc.Localize("NoRankText", "無")}" },
+            { HuntRank.B, $"{Loc.Localize("RankBText", "B 級")}" },
+            { HuntRank.A, $"{Loc.Localize("RankAText", "A 級")}" },
+            { HuntRank.S, $"{Loc.Localize("RankSText", "S 級")}" },
+            { HuntRank.SSMinion, $"{Loc.Localize("RankSSMinionText", "SS 級隨從")}" },
+            { HuntRank.SS, $"{Loc.Localize("RankSSText", "SS 級")}" },
         };
 
         private void DrawHuntTab()
@@ -515,10 +515,10 @@ namespace SonarPlugin.GUI
             
             ImGui.Spacing();
 
-            if (ImGui.TreeNodeEx("##huntTabReportNotifications", ImGuiTreeNodeFlags.CollapsingHeader | ImGuiTreeNodeFlags.DefaultOpen, $"{Loc.Localize("HuntNotifications", "Hunt Report Notifications")}"))
+            if (ImGui.TreeNodeEx("##huntTabReportNotifications", ImGuiTreeNodeFlags.CollapsingHeader | ImGuiTreeNodeFlags.DefaultOpen, $"{Loc.Localize("HuntNotifications", "狩獵通報提醒")}"))
             {
                 ImGui.Indent();
-                SonarImGui.Checkbox($"{Loc.Localize("AllSRankSettings", "Separate Rank SS and Minions from Rank S")}##allsranks", this.Plugin.Configuration.AllSRankSettings, value =>
+                SonarImGui.Checkbox($"{Loc.Localize("AllSRankSettings", "將 SS 級與隨從和 S 級分開設定")}##allsranks", this.Plugin.Configuration.AllSRankSettings, value =>
                 {
                     this._save = this._server = true;
                     this.Plugin.Configuration.AllSRankSettings = value;
@@ -535,7 +535,7 @@ namespace SonarPlugin.GUI
                     }
                 });
 
-                SonarImGui.Checkbox($"{Loc.Localize("AdvancedHuntReportingSettings", "Granular Hunt Reporting Settings")}##advanced", this.Plugin.Configuration.AdvancedHuntReportSettings, value =>
+                SonarImGui.Checkbox($"{Loc.Localize("AdvancedHuntReportingSettings", "個別狩獵通報設定")}##advanced", this.Plugin.Configuration.AdvancedHuntReportSettings, value =>
                 {
                     this._save = this._server = true;
                     this.Plugin.Configuration.AdvancedHuntReportSettings = value;
@@ -573,7 +573,7 @@ namespace SonarPlugin.GUI
                 ImGui.Separator();
                 ImGui.Spacing();
 
-                SonarImGui.Combo($"{Loc.Localize("SSMinionNotificationMode", "SS Minion Notifications Mode")}", (int)this.Plugin.Configuration.SSMinionReportingMode, EnumCheapLocExtensions.CheapLoc<NotifyMode>().Values.ToArray(), value =>
+                SonarImGui.Combo($"{Loc.Localize("SSMinionNotificationMode", "SS 級隨從提醒方式")}", (int)this.Plugin.Configuration.SSMinionReportingMode, EnumCheapLocExtensions.CheapLoc<NotifyMode>().Values.ToArray(), value =>
                 {
                     this._save = true;
                     this.Plugin.Configuration.SSMinionReportingMode = (NotifyMode)value;
@@ -583,32 +583,32 @@ namespace SonarPlugin.GUI
 
             ImGui.Spacing();
 
-            if (ImGui.TreeNodeEx("##huntTabDisplayTimers", ImGuiTreeNodeFlags.CollapsingHeader | ImGuiTreeNodeFlags.DefaultOpen, $"{Loc.Localize("HuntDisplayTimers", "Hunt Display Timers")}"))
+            if (ImGui.TreeNodeEx("##huntTabDisplayTimers", ImGuiTreeNodeFlags.CollapsingHeader | ImGuiTreeNodeFlags.DefaultOpen, $"{Loc.Localize("HuntDisplayTimers", "狩獵顯示時間")}"))
             {
                 ImGui.Indent();
 
-                ImGui.TextDisabled(Loc.Localize("DisplayTimersHelpText", "All timers are in seconds. CTRL+Click to input directly."));
+                ImGui.TextDisabled(Loc.Localize("DisplayTimersHelpText", "所有時間皆以秒為單位。Ctrl + 點擊可直接輸入。"));
                 ImGui.Spacing();
 
-                SonarImGui.SliderInt($"{Loc.Localize("HuntDeadTimer", "Time since death (S and A)")}###huntDeadTimer", this.Plugin.Configuration.DisplayHuntDeadTimer, 0, 604800, value =>
+                SonarImGui.SliderInt($"{Loc.Localize("HuntDeadTimer", "討伐後顯示時間（S／A 級）")}###huntDeadTimer", this.Plugin.Configuration.DisplayHuntDeadTimer, 0, 604800, value =>
                 {
                     this._save = true;
                     this.Plugin.Configuration.DisplayHuntDeadTimer = value;
                 });
 
-                SonarImGui.SliderInt($"{Loc.Localize("HuntUpdateTimer", "Time since last update (S and A)")}###huntUpdateTimer", this.Plugin.Configuration.DisplayHuntUpdateTimer, 60, 604800, value =>
+                SonarImGui.SliderInt($"{Loc.Localize("HuntUpdateTimer", "最後更新後顯示時間（S／A 級）")}###huntUpdateTimer", this.Plugin.Configuration.DisplayHuntUpdateTimer, 60, 604800, value =>
                 {
                     this._save = true;
                     this.Plugin.Configuration.DisplayHuntUpdateTimer = value;
                 });
 
-                SonarImGui.SliderInt($"{Loc.Localize("HuntUpdateOtherTimer", "Time since last update (B)")}###huntUpdateOtherTimer", this.Plugin.Configuration.DisplayHuntUpdateTimerOther, 60, 604800, value =>
+                SonarImGui.SliderInt($"{Loc.Localize("HuntUpdateOtherTimer", "最後更新後顯示時間（B 級）")}###huntUpdateOtherTimer", this.Plugin.Configuration.DisplayHuntUpdateTimerOther, 60, 604800, value =>
                 {
                     this._save = true;
                     this.Plugin.Configuration.DisplayHuntUpdateTimerOther = value;
                 });
 
-                SonarImGui.SliderInt($"{Loc.Localize("HuntsDisplayLimit", "Hunts Display Limit")}###huntDisplayLimit", this.Plugin.Configuration.HuntsDisplayLimit, 1, 10000, value =>
+                SonarImGui.SliderInt($"{Loc.Localize("HuntsDisplayLimit", "狩獵顯示數量上限")}###huntDisplayLimit", this.Plugin.Configuration.HuntsDisplayLimit, 1, 10000, value =>
                 {
                     this._save = true;
                     this.Plugin.Configuration.HuntsDisplayLimit = value;
@@ -620,26 +620,26 @@ namespace SonarPlugin.GUI
 
         private readonly Dictionary<ExpansionPack, string> expansionStrings = new Dictionary<ExpansionPack, string>()
         {
-            { ExpansionPack.Unknown , $"{Loc.Localize("UnknownText", "Unknown")}" },
-            { ExpansionPack.ARealmReborn, $"{Loc.Localize("ARealmRebornText", "A Realm Reborn")}" },
-            { ExpansionPack.Heavensward, $"{Loc.Localize("HeavenswardText", "Heavensward")}" },
-            { ExpansionPack.Stormblood, $"{Loc.Localize("StormbloodText", "Stormblood")}" },
-            { ExpansionPack.Shadowbringers, $"{Loc.Localize("ShadowbringersText", "Shadowbringers")}" },
-            { ExpansionPack.Endwalker, $"{Loc.Localize("EndwalkerText", "Endwalker")}" },
-            { ExpansionPack.Dawntrail, $"{Loc.Localize("DawntrailText", "Dawntrail")}" },
+            { ExpansionPack.Unknown , $"{Loc.Localize("UnknownText", "未知")}" },
+            { ExpansionPack.ARealmReborn, $"{Loc.Localize("ARealmRebornText", "重生之境")}" },
+            { ExpansionPack.Heavensward, $"{Loc.Localize("HeavenswardText", "蒼穹之禁城")}" },
+            { ExpansionPack.Stormblood, $"{Loc.Localize("StormbloodText", "紅蓮之狂潮")}" },
+            { ExpansionPack.Shadowbringers, $"{Loc.Localize("ShadowbringersText", "暗影之逆焰")}" },
+            { ExpansionPack.Endwalker, $"{Loc.Localize("EndwalkerText", "曉月之終途")}" },
+            { ExpansionPack.Dawntrail, $"{Loc.Localize("DawntrailText", "黃金的遺產")}" },
         };
 
         private readonly Dictionary<SonarJurisdiction, string> jurisdictionsCombo = new Dictionary<SonarJurisdiction, string>()
         {
-            { SonarJurisdiction.Default, $"{Loc.Localize("DefaultJurisdictionText", "Default")}" },
-            { SonarJurisdiction.None, $"{Loc.Localize("NoneJurisdictionText", "None")}" },
-            { SonarJurisdiction.Instance, $"{Loc.Localize("InstanceJurisdictionText", "Instance")}" },
-            { SonarJurisdiction.Zone, $"{Loc.Localize("ZoneJurisdictionText", "Zone")}" },
-            { SonarJurisdiction.World, $"{Loc.Localize("WorldJurisdictionText", "World")}" },
-            { SonarJurisdiction.Datacenter, $"{Loc.Localize("DatacenterJurisdictionText", "Data Center")}" },
-            { SonarJurisdiction.Region, $"{Loc.Localize("RegionJurisdictionText", "Region")}" },
-            { SonarJurisdiction.Audience, $"{Loc.Localize("AudienceJurisdictionText", "Audience")}" },
-            { SonarJurisdiction.All, $"{Loc.Localize("AllJurisdictionText", "All")}" },
+            { SonarJurisdiction.Default, $"{Loc.Localize("DefaultJurisdictionText", "預設")}" },
+            { SonarJurisdiction.None, $"{Loc.Localize("NoneJurisdictionText", "無")}" },
+            { SonarJurisdiction.Instance, $"{Loc.Localize("InstanceJurisdictionText", "分流")}" },
+            { SonarJurisdiction.Zone, $"{Loc.Localize("ZoneJurisdictionText", "區域")}" },
+            { SonarJurisdiction.World, $"{Loc.Localize("WorldJurisdictionText", "世界")}" },
+            { SonarJurisdiction.Datacenter, $"{Loc.Localize("DatacenterJurisdictionText", "資料中心")}" },
+            { SonarJurisdiction.Region, $"{Loc.Localize("RegionJurisdictionText", "地區")}" },
+            { SonarJurisdiction.Audience, $"{Loc.Localize("AudienceJurisdictionText", "通報受眾")}" },
+            { SonarJurisdiction.All, $"{Loc.Localize("AllJurisdictionText", "全部")}" },
         };
 
         private readonly Dictionary<SonarLogLevel, string> logLevelCombo = new()
@@ -779,27 +779,27 @@ namespace SonarPlugin.GUI
 
             ImGui.Spacing();
 
-            if (ImGui.TreeNodeEx("##fateTabDisplayTimers", ImGuiTreeNodeFlags.CollapsingHeader | ImGuiTreeNodeFlags.DefaultOpen, $"{Loc.Localize("FateDisplayTimers", "Fate Display Timers")}"))
+            if (ImGui.TreeNodeEx("##fateTabDisplayTimers", ImGuiTreeNodeFlags.CollapsingHeader | ImGuiTreeNodeFlags.DefaultOpen, $"{Loc.Localize("FateDisplayTimers", "FATE 顯示時間")}"))
             {
                 ImGui.Indent();
 
-                ImGui.TextDisabled(Loc.Localize("DisplayTimersHelpText", "All timers are in seconds. CTRL+Click to input directly."));
+                ImGui.TextDisabled(Loc.Localize("DisplayTimersHelpText", "所有時間皆以秒為單位。Ctrl + 點擊可直接輸入。"));
                 ImGui.Spacing();
 
-                this._save |= ImGui.SliderInt($"{Loc.Localize("FateDeadTimer", "Time since completion or failure")}###fateDeadTimer", ref this.Plugin.Configuration.DisplayFateDeadTimer, 0, 604800);
-                this._save |= ImGui.SliderInt($"{Loc.Localize("FateUpdateTimer", "Time since last update")}###fateUpdateTimer", ref this.Plugin.Configuration.DisplayFateUpdateTimer, 60, 604800);
-                this._save |= ImGui.SliderInt($"{Loc.Localize("FatesDisplayLimit", "Fates Display Limit")}###fateDisplayLimit", ref this.Plugin.Configuration.FatesDisplayLimit, 1, 10000);
+                this._save |= ImGui.SliderInt($"{Loc.Localize("FateDeadTimer", "完成或失敗後顯示時間")}###fateDeadTimer", ref this.Plugin.Configuration.DisplayFateDeadTimer, 0, 604800);
+                this._save |= ImGui.SliderInt($"{Loc.Localize("FateUpdateTimer", "最後更新後顯示時間")}###fateUpdateTimer", ref this.Plugin.Configuration.DisplayFateUpdateTimer, 60, 604800);
+                this._save |= ImGui.SliderInt($"{Loc.Localize("FatesDisplayLimit", "FATE 顯示數量上限")}###fateDisplayLimit", ref this.Plugin.Configuration.FatesDisplayLimit, 1, 10000);
 
                 ImGui.Unindent();
             }
 
             ImGui.Spacing();
 
-            if (ImGui.TreeNodeEx("##fateSelection", ImGuiTreeNodeFlags.CollapsingHeader | ImGuiTreeNodeFlags.DefaultOpen, $"{Loc.Localize("FateSelection", "Fate Selection")}"))
+            if (ImGui.TreeNodeEx("##fateSelection", ImGuiTreeNodeFlags.CollapsingHeader | ImGuiTreeNodeFlags.DefaultOpen, $"{Loc.Localize("FateSelection", "FATE 選擇")}"))
             {
                 ImGui.Indent();
 
-                ImGui.Text(Loc.Localize("DefaultReportJurisdiction", "Default Report Jurisdiction")); ImGui.SameLine();
+                ImGui.Text(Loc.Localize("DefaultReportJurisdiction", "預設通報範圍")); ImGui.SameLine();
                 int index = this.jurisdictionsCombo.Keys.ToList().IndexOf(this.Client.Configuration.FateConfig.GetDefaultJurisdiction());
 
                 if (ImGui.Combo($"##fate_default", ref index, this.jurisdictionsCombo.Values.ToArray(), this.jurisdictionsCombo.Count))
@@ -808,7 +808,7 @@ namespace SonarPlugin.GUI
                     this.Client.Configuration.FateConfig.SetDefaultJurisdiction(this.jurisdictionsCombo.Keys.ToList()[index]);
                 }
 
-                ImGui.Text(Loc.Localize("SearchText", "Search"));
+                ImGui.Text(Loc.Localize("SearchText", "搜尋"));
                 ImGui.SameLine();
                 if (ImGui.InputText("##fateSearchText", ref this.fateSearchText, 100))
                 {
@@ -836,7 +836,7 @@ namespace SonarPlugin.GUI
                     .Where(fate => fate is not null)
                     .DistinctBy(fate => fate!.GroupId)
                     .Count();
-                ImGui.Text(string.Format(Loc.Localize("SelectedFatesToChatText", "{0} fate(s) selected to chat"), selectedFates));
+                ImGui.Text(string.Format(Loc.Localize("SelectedFatesToChatText", "已選擇 {0} 個 FATE 傳送至聊天"), selectedFates));
                 ImGui.SameLine();
                 ImGui.Text(" | ");
                 ImGui.SameLine();
@@ -845,7 +845,7 @@ namespace SonarPlugin.GUI
                     .Where(fate => fate is not null)
                     .DistinctBy(fate => fate!.GroupId)
                     .Count();
-                ImGui.Text(string.Format(Loc.Localize("SelectedFatesToSoundText", "{0} fate(s) selected to sound"), selectedFates));
+                ImGui.Text(string.Format(Loc.Localize("SelectedFatesToSoundText", "已選擇 {0} 個 FATE 播放音效"), selectedFates));
                 ImGui.SameLine();
                 ImGui.Text(" | ");
                 ImGui.SameLine();
@@ -855,7 +855,7 @@ namespace SonarPlugin.GUI
                     .Where(fate => fate is not null)
                     .DistinctBy(fate => fate!.GroupId)
                     .Count();
-                ImGui.Text(string.Format(Loc.Localize("SelectedFatesToNonDefaultJurisdiction", "{0} fate(s) not set to default jurisdiction"), selectedFates));
+                ImGui.Text(string.Format(Loc.Localize("SelectedFatesToNonDefaultJurisdiction", "{0} 個 FATE 未使用預設通報範圍"), selectedFates));
 
 
                 ImGui.Spacing();
@@ -872,14 +872,14 @@ namespace SonarPlugin.GUI
                 if (ImGui.BeginTable("##fateSelectionTable", fateTableColumnCount, flags, tableOuterSize, 0.0f))
                 {
                     // TODO : Jurisdiction is currently set as no sort, will fix later once I find a good way to handle it
-                    ImGui.TableSetupColumn(Loc.Localize("FateTableChatColumn", "Chat"), ImGuiTableColumnFlags.PreferSortDescending, 0.0f, (int)FateSelectionColumns.Chat);
-                    ImGui.TableSetupColumn(Loc.Localize("FateTableSoundColumn", "Sounds"), ImGuiTableColumnFlags.PreferSortDescending, 0.0f, (int)FateSelectionColumns.Sound);
-                    ImGui.TableSetupColumn(Loc.Localize("FateTableJurisdictionColumn", "Jurisdiction"), ImGuiTableColumnFlags.NoHide, 50.0f, (int)FateSelectionColumns.Jurisdiction);
-                    ImGui.TableSetupColumn(Loc.Localize("FateTableLevelColumn", "Level"), ImGuiTableColumnFlags.DefaultSort | ImGuiTableColumnFlags.WidthFixed, 0.0f, (int)FateSelectionColumns.Level);
-                    ImGui.TableSetupColumn(Loc.Localize("FateTableNameColumn", "Name"), ImGuiTableColumnFlags.WidthStretch | ImGuiTableColumnFlags.NoHide, 0.0f, (int)FateSelectionColumns.Name);
-                    ImGui.TableSetupColumn(Loc.Localize("FateTableZoneColumn", "Zone"), ImGuiTableColumnFlags.None, 0.0f, (int)FateSelectionColumns.Zone);
-                    ImGui.TableSetupColumn(Loc.Localize("FateTableExpansionColumn", "Expansion"), ImGuiTableColumnFlags.DefaultHide, 0.0f, (int)FateSelectionColumns.Expansion);
-                    ImGui.TableSetupColumn(Loc.Localize("FateTableAchievementColumn", "Achievement"), ImGuiTableColumnFlags.DefaultHide, 0.0f, (int)FateSelectionColumns.AchievementName);
+                    ImGui.TableSetupColumn(Loc.Localize("FateTableChatColumn", "聊天"), ImGuiTableColumnFlags.PreferSortDescending, 0.0f, (int)FateSelectionColumns.Chat);
+                    ImGui.TableSetupColumn(Loc.Localize("FateTableSoundColumn", "音效"), ImGuiTableColumnFlags.PreferSortDescending, 0.0f, (int)FateSelectionColumns.Sound);
+                    ImGui.TableSetupColumn(Loc.Localize("FateTableJurisdictionColumn", "通報範圍"), ImGuiTableColumnFlags.NoHide, 50.0f, (int)FateSelectionColumns.Jurisdiction);
+                    ImGui.TableSetupColumn(Loc.Localize("FateTableLevelColumn", "等級"), ImGuiTableColumnFlags.DefaultSort | ImGuiTableColumnFlags.WidthFixed, 0.0f, (int)FateSelectionColumns.Level);
+                    ImGui.TableSetupColumn(Loc.Localize("FateTableNameColumn", "名稱"), ImGuiTableColumnFlags.WidthStretch | ImGuiTableColumnFlags.NoHide, 0.0f, (int)FateSelectionColumns.Name);
+                    ImGui.TableSetupColumn(Loc.Localize("FateTableZoneColumn", "區域"), ImGuiTableColumnFlags.None, 0.0f, (int)FateSelectionColumns.Zone);
+                    ImGui.TableSetupColumn(Loc.Localize("FateTableExpansionColumn", "版本"), ImGuiTableColumnFlags.DefaultHide, 0.0f, (int)FateSelectionColumns.Expansion);
+                    ImGui.TableSetupColumn(Loc.Localize("FateTableAchievementColumn", "成就"), ImGuiTableColumnFlags.DefaultHide, 0.0f, (int)FateSelectionColumns.AchievementName);
                     ImGui.TableSetupScrollFreeze(0, 1);
                     ImGui.TableHeadersRow();
 
@@ -919,7 +919,7 @@ namespace SonarPlugin.GUI
 
                         if (ImGui.IsItemHovered())
                         {
-                            ImGui.SetTooltip($"{Loc.Localize("SendToChat", "Send to chat")}");
+                            ImGui.SetTooltip($"{Loc.Localize("SendToChat", "傳送至聊天")}");
                         }
 
                         ImGui.TableNextColumn();
@@ -939,7 +939,7 @@ namespace SonarPlugin.GUI
 
                         if (ImGui.IsItemHovered())
                         {
-                            ImGui.SetTooltip($"{Loc.Localize("SendToSound", "Play Sounds")}");
+                            ImGui.SetTooltip($"{Loc.Localize("SendToSound", "播放音效")}");
                         }
 
                         ImGui.TableNextColumn();
@@ -985,7 +985,7 @@ namespace SonarPlugin.GUI
             ImGui.BeginChild("##aboutTabScrollRegion");
             {
                 ImGui.Text($"{this.Stub.PluginName} v{Assembly.GetExecutingAssembly().GetName().Version}");
-                ImGui.Text($"{Loc.Localize("AboutSonarBroughtBy", "Brought to you by the Sonar Team")}");
+                ImGui.Text($"{Loc.Localize("AboutSonarBroughtBy", "由 Sonar Team 提供")}");
 
                 if (ImGui.Button("Sonar Support Discord##SonarDiscord"))
                 {
@@ -1006,28 +1006,28 @@ namespace SonarPlugin.GUI
 
                 ImGui.Spacing(); ImGui.Separator(); ImGui.Spacing();
 
-                ImGui.Text($"{Loc.Localize("SonarStatus", "Sonar Status")}: "); ImGui.SameLine();
+                ImGui.Text($"{Loc.Localize("SonarStatus", "Sonar 狀態")}："); ImGui.SameLine();
                 if (this.Client.Connection.IsConnected)
                 {
                     ImGui.PushStyleColor(ImGuiCol.Text, 0xff00ff33);
-                    ImGui.Text($"{Loc.Localize("SonarConnected", "Connected")}");
+                    ImGui.Text($"{Loc.Localize("SonarConnected", "已連線")}");
                     ImGui.PopStyleColor();
                     if (ImGui.IsItemHovered()) ImGui.SetTooltip($"{this.Client.Ping:F0}ms");
                 }
                 else
                 {
                     ImGui.PushStyleColor(ImGuiCol.Text, 0xff0099ff);
-                    ImGui.Text($"{Loc.Localize("SonarDisconnected", "Disconnected")}");
+                    ImGui.Text($"{Loc.Localize("SonarDisconnected", "未連線")}");
                     ImGui.PopStyleColor();
-                    if (ImGui.IsItemHovered()) ImGui.SetTooltip($"{Loc.Localize("SonarDisconnectedTooltip", "Sonar will keep trying to reconnect automatically")}");
+                    if (ImGui.IsItemHovered()) ImGui.SetTooltip($"{Loc.Localize("SonarDisconnectedTooltip", "Sonar 會持續嘗試自動重新連線")}");
                 }
 
                 ImGui.SameLine();
-                if (ImGui.Button($"{Loc.Localize("SonarReconnect", "Reconnect")}"))
+                if (ImGui.Button($"{Loc.Localize("SonarReconnect", "重新連線")}"))
                 {
                     this.Client.Connection.Reconnect();
                 }
-                if (ImGui.IsItemHovered()) ImGui.SetTooltip($"{Loc.Localize("SonarReconnectTooltip", "Signal Sonar to attempt reconnecting to server")}");
+                if (ImGui.IsItemHovered()) ImGui.SetTooltip($"{Loc.Localize("SonarReconnectTooltip", "要求 Sonar 嘗試重新連線至伺服器")}");
             }
 
             ImGui.EndChild(); // End scroll region

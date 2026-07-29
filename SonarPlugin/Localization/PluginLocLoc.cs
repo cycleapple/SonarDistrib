@@ -10,22 +10,22 @@ namespace SonarPlugin.Localization
     [EnumLocStrings("Localization")]
     public enum PluginLocLoc
     {
-        [EnumLoc(Fallback = "Import language file")]
+        [EnumLoc(Fallback = "匯入語言檔")]
         ImportPrompt,
 
-        [EnumLoc(Fallback = "Export language file")]
+        [EnumLoc(Fallback = "匯出語言檔")]
         ExportPrompt,
 
-        [EnumLoc(Fallback = "Debug fallbacks")]
+        [EnumLoc(Fallback = "顯示備援鍵值")]
         DebugFallbacks,
 
-        [EnumLoc(Fallback = "Use debug fallbacks, showing the keys.")]
+        [EnumLoc(Fallback = "使用除錯備援文字並顯示鍵值。")]
         DebugFallbacksTooltip,
 
-        [EnumLoc(Fallback = "Minified export")]
+        [EnumLoc(Fallback = "壓縮匯出格式")]
         MinifiedExport,
 
-        [EnumLoc(Fallback = "Run language setup in a separate thread.")]
+        [EnumLoc(Fallback = "在獨立執行緒重新載入語言。")]
         ThreadedTooltip,
     }
 }

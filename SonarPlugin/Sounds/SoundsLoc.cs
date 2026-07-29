@@ -6,43 +6,43 @@ namespace SonarPlugin.Sounds
     [EnumLocStrings("Sounds")]
     public enum SoundsLoc : uint
     {
-        [EnumLoc("Config.PlaySounds", Fallback = "Play Sound")]
+        [EnumLoc("Config.PlaySounds", Fallback = "播放音效")]
         PlaySound,
 
-        [EnumLoc("Config.Sounds", Fallback = "Sounds")]
+        [EnumLoc("Config.Sounds", Fallback = "音效")]
         Sounds,
 
-        [EnumLoc("Config.GameSound", Fallback = "Game sound effect")]
+        [EnumLoc("Config.GameSound", Fallback = "遊戲音效")]
         GameSound,
 
-        [EnumLoc("Config.Resource", Fallback = "Legacy sound")]
+        [EnumLoc("Config.Resource", Fallback = "內建音效")]
         Resource,
 
-        [EnumLoc("Config.Custom", Fallback = "Custom")]
+        [EnumLoc("Config.Custom", Fallback = "自訂")]
         Custom,
 
-        [EnumLoc("Config.Unknown", Fallback = "Unknown")]
+        [EnumLoc("Config.Unknown", Fallback = "未知")]
         Unknown,
 
-        [EnumLoc("Config.GameSoundTooltip", Fallback = "Uses FFXIV's audio engine to play the game's built in sound effects.\nUses FFXIV's system sounds volume.")]
+        [EnumLoc("Config.GameSoundTooltip", Fallback = "使用 FFXIV 音效引擎播放遊戲內建音效。\n音量取決於 FFXIV 的系統音效設定。")]
         GameSoundTooltip,
 
-        [EnumLoc("Config.ResourceTooltip", Fallback = "Uses Sonar's audio engine to play previously included sound effects.\nUses Sonar's alert volume.")]
+        [EnumLoc("Config.ResourceTooltip", Fallback = "使用 Sonar 音效引擎播放內建音效。\n音量取決於 Sonar 的提醒音量。")]
         ResourceTooltip,
 
-        [EnumLoc("Config.CustomTooltip", Fallback = "Uses Sonar's audio engine to play a custom sound effect.\nUses Sonar's alert volume.")]
+        [EnumLoc("Config.CustomTooltip", Fallback = "使用 Sonar 音效引擎播放自訂音效。\n音量取決於 Sonar 的提醒音量。")]
         CustomTooltip,
 
-        [EnumLoc("Config.UnknownTooltip", Fallback = "Contact Sonar Support should this appear")]
+        [EnumLoc("Config.UnknownTooltip", Fallback = "若出現此選項，請聯絡 Sonar Support")]
         UnknownTooltip,
 
-        [EnumLoc("Config.SelectFile", Fallback = "Select file...")]
+        [EnumLoc("Config.SelectFile", Fallback = "選擇檔案……")]
         SelectFile,
 
-        [EnumLoc("Config.SelectFilePrompt", Fallback = "Custom sound file")]
+        [EnumLoc("Config.SelectFilePrompt", Fallback = "自訂音效檔")]
         SelectFilePrompt,
 
-        [EnumLoc("Config.SelectFilePromptFilter.SoundFiles", Fallback = "Sound files")]
+        [EnumLoc("Config.SelectFilePromptFilter.SoundFiles", Fallback = "音效檔")]
         SelectFilePromptSoundFiles,
 
         #region Sound Effect Fallbacks
@@ -50,7 +50,7 @@ namespace SonarPlugin.Sounds
         // This is used to define fallbacks
         // More information at SoundEngine.GetSoundName
 
-        [EnumLoc(Fallback = "Sound <id>")] // Generic fallback for non-existent SoundXY entries
+        [EnumLoc(Fallback = "音效 <id>")] // Generic fallback for non-existent SoundXY entries
         SoundGeneric,
 
         [EnumLoc(Fallback = "Chat Sounds <se.1>")]

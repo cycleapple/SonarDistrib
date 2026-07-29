@@ -10,34 +10,34 @@ namespace SonarPlugin.Localization
     [EnumLocStrings("Config")]
     public enum ConfigLoc
     {
-        [EnumLoc("Contribute.Global", Fallback = "Global Contribute")]
+        [EnumLoc("Contribute.Global", Fallback = "全域分享通報")]
         GlobalContribute,
 
-        [EnumLoc("Contribute.GlobalTooltip", Fallback = "Disable this to disable contributing both hunts and fates.\nAccessible via /sonaron and /sonaroff commands.")]
+        [EnumLoc("Contribute.GlobalTooltip", Fallback = "停用後將不再分享狩獵與 FATE 通報。\n也可使用 /sonaron 與 /sonaroff 指令切換。")]
         GlobalContributeTooltip,
 
-        [EnumLoc("Contribute.Hunts", Fallback = "Contribute Hunts")]
+        [EnumLoc("Contribute.Hunts", Fallback = "分享狩獵通報")]
         ContributeHunts,
 
-        [EnumLoc("Contribute.Fates", Fallback = "Contribute Fates")]
+        [EnumLoc("Contribute.Fates", Fallback = "分享 FATE 通報")]
         ContributeFates,
 
-        [EnumLoc("Contribute.Tooltip", Fallback = "Contributing reports is required in order to receive reports from other Sonar users.\nIf disabled Sonar will continue to work in local mode, where you'll see what's detected within your game but you'll not receive from others.")]
+        [EnumLoc("Contribute.Tooltip", Fallback = "必須分享通報才能接收其他 Sonar 使用者的通報。\n停用後 Sonar 仍會以本機模式運作，只顯示遊戲內自行偵測到的資訊。")]
         ContributeTooltip,
 
-        [EnumLoc("Contribute.GlobalDisabled", Fallback = "Global Disabled")]
+        [EnumLoc("Contribute.GlobalDisabled", Fallback = "全域分享已停用")]
         ContributeGlobalDisabled,
 
-        [EnumLoc("TrackAll.Hunts", Fallback = "Track All Hunts")]
+        [EnumLoc("TrackAll.Hunts", Fallback = "追蹤所有狩獵")]
         TrackAllHunts,
 
-        [EnumLoc("TrackAll.Fates", Fallback = "Track All Fates")]
+        [EnumLoc("TrackAll.Fates", Fallback = "追蹤所有 FATE")]
         TrackAllFates,
 
-        [EnumLoc("TrackAll.Tooltip", Fallback = "Checked: Track all reports regardless of jurisdiction settings.\nUnchecked: Track reports within jurisdiction settings only.")]
+        [EnumLoc("TrackAll.Tooltip", Fallback = "勾選：忽略通報範圍設定，追蹤所有通報。\n未勾選：只追蹤設定範圍內的通報。")]
         TrackAllTooltip,
 
-        [EnumLoc(Fallback = "Receive Jurisdiction")]
+        [EnumLoc(Fallback = "接收範圍")]
         ReceiveJurisdiction,
 
     }
