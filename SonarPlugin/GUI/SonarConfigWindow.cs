@@ -1195,7 +1195,7 @@ namespace SonarPlugin.GUI
             ImGui.Spacing();
 
             var index = this.logLevelCombo.Keys.ToList().IndexOf(this.Client.Configuration.LogLevel);
-            if (ImGui.Combo($"{Loc.Localize("LogLevel", "Log Level")}", ref index, this.logLevelCombo.Values.ToArray(), this.logLevelCombo.Count))
+            if (ImGui.Combo($"{Loc.Localize("LogLevel", "記錄層級")}", ref index, this.logLevelCombo.Values.ToArray(), this.logLevelCombo.Count))
             {
                 this._save = this._server = true;
                 this.Client.LogLevel = this.logLevelCombo.Keys.ToList()[index]; // This also updates configuration

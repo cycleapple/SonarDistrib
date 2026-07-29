@@ -53,81 +53,81 @@ namespace SonarPlugin.Sounds
         [EnumLoc(Fallback = "音效 <id>")] // Generic fallback for non-existent SoundXY entries
         SoundGeneric,
 
-        [EnumLoc(Fallback = "Chat Sounds <se.1>")]
+        [EnumLoc(Fallback = "聊天音效 <se.1>")]
         Sound37,
 
-        [EnumLoc(Fallback = "Chat Sounds <se.2>")]
+        [EnumLoc(Fallback = "聊天音效 <se.2>")]
         Sound38,
 
-        [EnumLoc(Fallback = "Chat Sounds <se.3>")]
+        [EnumLoc(Fallback = "聊天音效 <se.3>")]
         Sound39,
 
-        [EnumLoc(Fallback = "Chat Sounds <se.4>")]
+        [EnumLoc(Fallback = "聊天音效 <se.4>")]
         Sound40,
 
-        [EnumLoc(Fallback = "Chat Sounds <se.5>")]
+        [EnumLoc(Fallback = "聊天音效 <se.5>")]
         Sound41,
 
-        [EnumLoc(Fallback = "Chat Sounds <se.6>")]
+        [EnumLoc(Fallback = "聊天音效 <se.6>")]
         Sound42,
 
-        [EnumLoc(Fallback = "Chat Sounds <se.7>")]
+        [EnumLoc(Fallback = "聊天音效 <se.7>")]
         Sound43,
 
-        [EnumLoc(Fallback = "Chat Sounds <se.8>")]
+        [EnumLoc(Fallback = "聊天音效 <se.8>")]
         Sound44,
 
-        [EnumLoc(Fallback = "Chat Sounds <se.9>")]
+        [EnumLoc(Fallback = "聊天音效 <se.9>")]
         Sound45,
 
-        [EnumLoc(Fallback = "Chat Sounds <se.10>")]
+        [EnumLoc(Fallback = "聊天音效 <se.10>")]
         Sound46,
 
-        [EnumLoc(Fallback = "Chat Sounds <se.11>")]
+        [EnumLoc(Fallback = "聊天音效 <se.11>")]
         Sound47,
 
-        [EnumLoc(Fallback = "Chat Sounds <se.12>")]
+        [EnumLoc(Fallback = "聊天音效 <se.12>")]
         Sound48,
 
-        [EnumLoc(Fallback = "Chat Sounds <se.13>")]
+        [EnumLoc(Fallback = "聊天音效 <se.13>")]
         Sound49,
 
-        [EnumLoc(Fallback = "Chat Sounds <se.14>")]
+        [EnumLoc(Fallback = "聊天音效 <se.14>")]
         Sound50,
 
-        [EnumLoc(Fallback = "Chat Sounds <se.15>")]
+        [EnumLoc(Fallback = "聊天音效 <se.15>")]
         Sound51,
 
-        [EnumLoc(Fallback = "Chat Sounds <se.16>")]
+        [EnumLoc(Fallback = "聊天音效 <se.16>")]
         Sound52,
         #endregion
 
         #region Resource Sound Fallbacks
-        [EnumLoc("Resources.EnterChat", Fallback = "Enter Chat")]
+        [EnumLoc("Resources.EnterChat", Fallback = "開啟聊天輸入")]
         ResEnterChat,
 
-        [EnumLoc("Resources.Fanfare", Fallback = "Fanfare")]
+        [EnumLoc("Resources.Fanfare", Fallback = "獲得成就")]
         ResFanfare,
 
-        [EnumLoc("Resources.FeatureUnlocked", Fallback = "Feature Unlocked")]
+        [EnumLoc("Resources.FeatureUnlocked", Fallback = "功能開放")]
         ResFeatureUnlocked,
 
-        [EnumLoc("Resources.IncomingTell1", Fallback = "Incoming Tell 1")]
+        [EnumLoc("Resources.IncomingTell1", Fallback = "收到悄悄話 1")]
         ResIncomingTell1,
 
-        [EnumLoc("Resources.IncomingTell2", Fallback = "Incoming Tell 2")]
+        [EnumLoc("Resources.IncomingTell2", Fallback = "收到悄悄話 2")]
         ResIncomingTell2,
 
-        [EnumLoc("Resources.LimitBreakCharged", Fallback = "Limit Break Charged")]
+        [EnumLoc("Resources.LimitBreakCharged", Fallback = "極限技充能")]
         ResLimitBreakCharged,
 
-        [EnumLoc("Resources.LimitBreakUnlocked", Fallback = "Limit Break Unlocked")]
+        [EnumLoc("Resources.LimitBreakUnlocked", Fallback = "極限技可用")]
         ResLimitBreakUnlocked,
 
-        [EnumLoc("Resources.LinkshellTransmission", Fallback = "Linkshell Transmission")]
+        [EnumLoc("Resources.LinkshellTransmission", Fallback = "通訊貝通知")]
         ResLinkshellTransmission,
 
-        [EnumLoc("Resources.Notification", Fallback = "Notification")]
+        [EnumLoc("Resources.Notification", Fallback = "通知")]
         ResNotification,
         #endregion
     }

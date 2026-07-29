@@ -10,10 +10,10 @@ namespace SonarPlugin.Localization
         [EnumLoc(Fallback = "Sonar Team")]
         Author,
 
-        [EnumLoc(Fallback = "English")]
+        [EnumLoc(Fallback = "台灣繁體中文")]
         Language,
 
-        [EnumLoc(Fallback = "Default plugin fallbacks")]
+        [EnumLoc(Fallback = "台灣繁中介面")]
         Notes,
     }
 }
