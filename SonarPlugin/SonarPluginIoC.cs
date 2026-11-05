@@ -1,4 +1,4 @@
-﻿using Dalamud.IoC;
+using Dalamud.IoC;
 using Sonar;
 using System;
 using System.Linq;
@@ -79,7 +79,7 @@ namespace SonarPlugin
                 return SonarLanguage.ChineseSimplified;
             }
 
-            var versionInfo = VersionUtils.GetSonarVersionModel(this.Data);
+            var versionInfo = VersionUtils.GetSonarVersionModel(this.Data, this.PluginInterface);
             var client = new SonarClient(startInfo) { VersionInfo = versionInfo };
             Database.DefaultLanguage = this.Data.Language switch
             {

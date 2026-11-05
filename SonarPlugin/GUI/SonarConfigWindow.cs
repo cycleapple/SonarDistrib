@@ -1,4 +1,4 @@
-﻿using AG.EnumLocalization;
+using AG.EnumLocalization;
 using CheapLoc;
 using Dalamud.Data;
 using Dalamud.Game.Text;
@@ -1042,7 +1042,7 @@ namespace SonarPlugin.GUI
                 ImGui.BeginChild("##debugVersionInfo", new Vector2(0, 100 * ImGui.GetIO().FontGlobalScale), true, ImGuiWindowFlags.None);
                 {
                     ImGui.Text($"{this.Stub.PluginName} v{Assembly.GetExecutingAssembly().GetName().Version}");
-                    ImGui.Text($"Dalamud {VersionUtils.GetDalamudVersion()} (Git: {VersionUtils.GetDalamudBuild()})");
+                    ImGui.Text($"Dalamud {VersionUtils.GetDalamudVersion(this.PluginInterface)} (Git: {VersionUtils.GetDalamudBuild(this.PluginInterface)})");
                     ImGui.Text($"FFXIV {VersionUtils.GetGameVersion(this.Data)}");
 
                     ImGui.Text($"Client Hash: ");

@@ -1,4 +1,5 @@
-﻿using System;
+using Dalamud.Plugin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Sonar.Models;
@@ -25,12 +26,12 @@ namespace SonarPlugin.Utility
         /// <summary>
         /// Get Dalamud Version
         /// </summary>
-        public static string GetDalamudVersion() => Util.AssemblyVersion;
+        public static string GetDalamudVersion(IDalamudPluginInterface pi) => pi.GetDalamudVersion().Version.ToString();
 
         /// <summary>
         /// Get Dalamud Build Git Hash
         /// </summary>
-        public static string GetDalamudBuild() => Util.GetGitHash();
+        public static string GetDalamudBuild(IDalamudPluginInterface pi) => pi.GetDalamudVersion().GitHash;
 
         /// <summary>
         /// Get Dalamud Hash
@@ -45,14 +46,14 @@ namespace SonarPlugin.Utility
         /// <summary>
         /// Get SonarVersion for Sonar.NET
         /// </summary>
-        public static SonarVersion GetSonarVersionModel(IDataManager data)
+        public static SonarVersion GetSonarVersionModel(IDataManager data, IDalamudPluginInterface pi)
         {
             return new SonarVersion
             {
                 Game = GetGameVersion(data),
                 Plugin = $"{Assembly.GetExecutingAssembly().GetName().Name} {GetSonarPluginVersion()}",
                 PluginHash = SonarVersion.GetAssemblyHash(Assembly.GetExecutingAssembly()),
-                Dalamud = $"{GetDalamudVersion()} ({GetDalamudBuild()})",
+                Dalamud = $"{GetDalamudVersion(pi)} ({GetDalamudBuild(pi)})",
                 DalamudHash = GetDalamudHash()
             };
         }
